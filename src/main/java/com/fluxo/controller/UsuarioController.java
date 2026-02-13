@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fluxo.entity.Usuario;
+import com.fluxo.dto.UsuarioCreateDTO;
+import com.fluxo.dto.UsuarioResponseDTO;
 import com.fluxo.service.UsuarioService;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class UsuarioController {
     private final UsuarioService service;
 
     @PostMapping("/usuarios")
-    public Usuario criarUsuario(@RequestBody Usuario usuario){
+    public UsuarioResponseDTO criarUsuario(@RequestBody UsuarioCreateDTO usuario){
         return service.criarUsuario(usuario);
     }
 
