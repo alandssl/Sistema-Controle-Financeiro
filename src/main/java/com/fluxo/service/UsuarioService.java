@@ -1,6 +1,5 @@
 package com.fluxo.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,13 +19,18 @@ public class UsuarioService {
     private final UsuarioRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-    public List<Usuario> listarTodos() {
-        return repository.findAll();
+    public List<UsuarioResponseDTO> listarUsuarios() {
+        return repository.findAll()
+            .stream()
+            .map(UsuarioResponseDTO::new)
+            .toList();
     }
 
-    public Usuario buscarPorId(Long id) {
-        return repository.findById(id).
+    public UsuarioResponseDTO buscarPorId(Long id) {
+        Usuario usuario = repository.findById(id).
         orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        return new UsuarioResponseDTO(usuario);
     }
 
     public UsuarioResponseDTO criarUsuario(UsuarioCreateDTO dto) {
