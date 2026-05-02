@@ -1,151 +1,123 @@
-Sistema de Controle Financeiro Pessoal
+# 💰 Sistema de Controle Financeiro Pessoal
 
-Projeto backend desenvolvido com Java + Spring Boot, com foco em boas práticas, segurança e organização de código, simulando um sistema real de controle financeiro pessoal.
+API backend desenvolvida com Java e Spring Boot para gerenciamento de finanças pessoais, com foco em segurança, organização de código e boas práticas utilizadas no mercado.
 
-O sistema permite que cada usuário gerencie suas entradas e saídas financeiras, com autenticação segura via JWT, garantindo que cada usuário tenha acesso apenas aos seus próprios dados.
+---
 
-🚀 Funcionalidades
+## 📖 Sobre o Projeto
 
-Autenticação e Segurança
+O sistema permite que usuários registrem e acompanhem suas entradas e saídas financeiras de forma segura e organizada.
 
-Cadastro de usuário com senha criptografada (BCrypt)
+Cada usuário possui acesso exclusivo aos seus dados, com autenticação baseada em JWT.
 
-Login com email e senha
+---
 
-Geração de JWT (JSON Web Token)
+## 🚀 Funcionalidades
 
-Rotas protegidas com Spring Security
+### 🔐 Autenticação e Segurança
+- Cadastro de usuário com senha criptografada (BCrypt)
+- Login com email e senha
+- Geração de token JWT
+- Rotas protegidas com Spring Security
+- Isolamento de dados por usuário
 
-Cada usuário acessa somente seus próprios dados
+---
 
-💸 Controle Financeiro
-
-Registrar Entradas (salário, pix recebido, etc)
-
-Registrar Saídas (aluguel, mercado, cartão, etc)
+### 💸 Controle Financeiro
+- Registrar entradas (salário, transferências, etc.)
+- Registrar saídas (aluguel, mercado, contas, etc.)
+- Listar lançamentos do usuário
+- Editar lançamentos
+- Excluir lançamentos
+- Cálculo automático do saldo total
 
 Cada lançamento possui:
+- Descrição
+- Valor
+- Tipo (ENTRADA ou SAÍDA)
+- Data
 
-Descrição
+---
 
-Valor
+## 🧠 Conceitos Aplicados
 
-Tipo (ENTRADA ou SAÍDA)
+- API REST estruturada
+- Spring Boot
+- Spring Data JPA / Hibernate
+- Relacionamentos entre entidades
+- Autenticação e autorização com JWT
+- Spring Security
+- DTOs para transferência de dados
+- Validação com Jakarta Validation
+- Tratamento global de exceções
+- Arquitetura em camadas
 
-Data
+---
 
-Listar lançamentos do usuário
+## 🛠️ Tecnologias
 
-Editar lançamentos
+### Backend
+- Java 17
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Spring Security
+- JWT
+- Lombok
+- Jakarta Validation
+- Springdoc OpenAPI (Swagger)
 
-Excluir lançamentos
+### Banco de Dados
+- PostgreSQL  
+- H2 (para testes)
 
-Cálculo automático do saldo total
+---
 
-🧠 Conceitos Aplicados
+## 🗃️ Modelagem
 
-Este projeto foi desenvolvido com foco em treinar e demonstrar:
+### Usuário
+- id  
+- nome  
+- email  
+- senha  
+- createdAt  
 
-Spring Boot na prática
+### MovimentoFinanceiro
+- id  
+- descricao  
+- valor  
+- tipo (ENTRADA / SAIDA)  
+- data  
+- usuario (ManyToOne)  
 
-API REST bem estruturada
+---
 
-Spring Data JPA / Hibernate
+## 🔄 Endpoints
 
-Relacionamentos entre entidades (@OneToMany, @ManyToOne)
+### Autenticação
+- `POST /auth/register` → Cadastro de usuário  
+- `POST /auth/login` → Login e geração do JWT  
 
-Autenticação e autorização com Spring Security + JWT
+### Movimentos Financeiros
+- `POST /movimentos` → Criar lançamento  
+- `GET /movimentos` → Listar lançamentos  
+- `PUT /movimentos/{id}` → Atualizar lançamento  
+- `DELETE /movimentos/{id}` → Remover lançamento  
+- `GET /movimentos/saldo` → Retornar saldo total  
 
-DTOs para entrada e saída de dados
+---
 
-Validações com Jakarta Validation
+## 📌 Objetivo
 
-Tratamento global de exceções (@ControllerAdvice)
+Este projeto foi desenvolvido para:
 
-Organização em camadas
+- Consolidar conhecimentos em Java e Spring Boot  
+- Aplicar conceitos de segurança com JWT  
+- Simular um sistema real de mercado  
+- Servir como projeto de portfólio para vagas backend  
 
-Boas práticas de versionamento com Git
+---
 
-🛠️ Tecnologias Utilizadas
-Backend
+## 👨‍💻 Autor
 
-Java 17
-
-Spring Boot 3.x
-
-Spring Web
-
-Spring Data JPA
-
-Spring Security
-
-JWT
-
-Lombok
-
-Jakarta Validation
-
-Springdoc OpenAPI (Swagger)
-
-Banco de Dados
-
-PostgreSQL
-
-(Opcional para testes: H2)
-
-🗃️ Modelagem Básica
-Usuário
-
-id
-
-nome
-
-email
-
-senha
-
-createdAt
-
-MovimentoFinanceiro
-
-id
-
-descricao
-
-valor
-
-tipo (ENTRADA / SAIDA)
-
-data
-
-usuario (ManyToOne)
-
-🔄 Endpoints Principais
-Autenticação
-
-POST /auth/register → Cadastro de usuário
-
-POST /auth/login → Login e geração do JWT
-
-Movimentos Financeiros
-
-POST /movimentos → Criar lançamento
-
-GET /movimentos → Listar lançamentos do usuário
-
-PUT /movimentos/{id} → Atualizar lançamento
-
-DELETE /movimentos/{id} → Remover lançamento
-
-GET /movimentos/saldo → Retorna o saldo total
-
-
-📌 Objetivo do Projeto
-
-Este projeto foi criado com o objetivo de:
-
-Consolidar conhecimentos em Java e Spring Boot
-
-Simular um sistema real usado no mercado
-
-Servir como projeto de portfólio para vagas de Backend Java / Java Júnior
+Alan
